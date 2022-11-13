@@ -30,6 +30,6 @@ public class Order {
 
     private LocalDateTime orderDate;
 
-    private Orderstatus status;
+    private OrderStatus status;
 
 }
