@@ -39,7 +39,7 @@ public class Order {
         member.getOrders().add(this);
     }
     public void addOrderItem(OrderItem orderItem){
-        orderItem.add(orderItem);
+        orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
     public void setDelivery(Delivery delivery){
@@ -54,6 +54,7 @@ public class Order {
         for(OrderItem orderItem : orderItems){
             order.addOrderItem(orderItem);
         }
+
         order.setStatus(OrderStatus.ORDER);
         order.setOrderDate(LocalDateTime.now());
         return order;
@@ -68,5 +69,13 @@ public class Order {
         for(OrderItem orderItem : orderItems){
             orderItem.cancel();
         }
+    }
+    // 조회 로직
+    public int getTotalPrice(){
+        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems){
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
     }
 }
