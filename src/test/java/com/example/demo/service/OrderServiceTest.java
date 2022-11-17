@@ -56,7 +56,18 @@ public class OrderServiceTest {
     }
     @Test
     public void 주문취소(){
+        Member member = createMember();
+        Item item = createBook("시골 JPA", 10000, 10);
+        int orderCount = 2;
 
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
+
+        orderService.cancelOrder(orderId);
+
+        Order getOrder = orderRepository.findOne(orderId);
+
+        assertEquals("주문 취소 시 상태는 CANCEL", OrderStatus.CANCEL, getOrder.getStatus());
+        assertEquals("주문이 취소된 상품은 그만큼 재고가 증가", 10,item.getStockQuantity());
     }
     private Member createMember(){
         Member member = new Member();
