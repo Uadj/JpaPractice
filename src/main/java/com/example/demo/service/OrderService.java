@@ -36,7 +36,7 @@ public class OrderService {
         return order.getId();
     }
     public List<Order> findOrders(OrderSearch orderSearch){
-        return orderRepository.findAll(orderSearch);
+        return orderRepository.findAllByString(orderSearch);
     }
     // 주문 취소
     @Transactional
