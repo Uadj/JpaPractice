@@ -2,6 +2,7 @@ package com.example.demo.SimpleQuery;
 
 import com.example.demo.domain.Address;
 import com.example.demo.domain.OrderStatus;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(of = "orderId")
+@AllArgsConstructor
 public class OrderQueryDto {
 
     private Long orderId;
